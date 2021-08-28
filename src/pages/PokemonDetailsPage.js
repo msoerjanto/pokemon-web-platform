@@ -1,11 +1,12 @@
 import { useQuery } from "@apollo/client";
 import React from "react";
 import { useParams } from "react-router-dom";
+import CatchPokeButton from "../components/CatchPokeButton";
 import { GET_POKEMON_QUERY } from "../graphql/queries/getPokemon";
 import withContext from "../withContext";
 
 
-function PokemonDetailsPageComponent() {
+function PokemonDetailsPageComponent(props) {
     let { name } = useParams();
 
     const gqlVariables = {
@@ -22,6 +23,7 @@ function PokemonDetailsPageComponent() {
                     {data.pokemon.name}
                 </h1>
                 <img src={data.pokemon.sprites.front_default} />
+                <CatchPokeButton pokemon={data.pokemon} catchPokemon={props.context.catchPokemon}/>
             </div>
         </div>
     </>

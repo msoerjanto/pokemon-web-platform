@@ -10,28 +10,35 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      caught: [],
-      menu: false
+      pokecaught: [],
     };
     this.routerRef = React.createRef();
-    this.toggleMenu = this.toggleMenu.bind(this);
   }
 
-  toggleMenu() {
-    this.setState({ menu: !this.state.menu })
+  componentDidMount() {
+    let pokecaught = localStorage.getItem("pokecaught");
+    pokecaught = pokecaught ? JSON.parse(pokecaught) : [];
+    this.setState({ pokecaught });
   }
+
+  catchPokemon = (pokemon) => {
+    let caught = this.state.pokecaught;
+    caught.push(pokemon);
+    localStorage.setItem("pokecaught", JSON.stringify(caught));
+    this.setState({pokecaught: caught});
+  }
+
 
   render() {
-    const show = (this.state.menu) ? "show" : "";
-    console.log('render with', this.state.menu);
     return (
       <Context.Provider value={{
-        ...this.state
+        ...this.state,
+        catchPokemon: this.catchPokemon
       }}>
         <Router ref={this.routerRef}>
           <div className="App">
             <header>
-              <NavBar/>
+              <NavBar />
             </header>
             <Switch>
               <Route exact path="/" component={PokemonListPage} />

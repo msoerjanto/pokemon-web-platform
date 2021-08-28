@@ -1,5 +1,4 @@
 import React from 'react';
-import withContext from '../withContext';
 import styled from '@emotion/styled'
 import { Link, useRouteMatch } from 'react-router-dom';
 
@@ -13,13 +12,10 @@ const PokeCardName = styled.strong`
     text-align: center;
 `
 
-function PokeCardComponent(props) {
-    console.log('pokemon:', props.pokemon);
-    let match = useRouteMatch();
-    console.log('match url:', match.url);
+export default function PokeCardComponent(props) {
     return (
 
-        <Link to={`${match.url}/${props.pokemon.name}`} style={{ textDecoration: 'none' }}>
+        <Link to={`pokemons/${props.pokemon.name}`} style={{ textDecoration: 'none' }}>
             <PokeCard className="d-flex flex-column">
                 <img src={props.pokemon.image} />
                 <PokeCardName>
@@ -31,4 +27,3 @@ function PokeCardComponent(props) {
     );
 }
 
-export default withContext(PokeCardComponent);
