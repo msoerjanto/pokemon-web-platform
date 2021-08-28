@@ -4,6 +4,7 @@ import Context from "./Context";
 import PokemonListPage from "../src/pages/PokemonListPage";
 import MyPokemonsPage from "../src/pages/MyPokemonsPage";
 import NavBar from "./components/NavBar";
+import PokemonDetailsPage from "./pages/PokemonDetailsPage";
 
 class App extends React.Component {
   constructor(props) {
@@ -32,11 +33,11 @@ class App extends React.Component {
             <header>
               <NavBar/>
             </header>
-
             <Switch>
               <Route exact path="/" component={PokemonListPage} />
               <Route exact path="/mypokemons" component={MyPokemonsPage} />
               <Route exact path="/pokemons" component={PokemonListPage} />
+              <Route path="/pokemons/:name" component={PokemonDetailsPage} />
             </Switch>
           </div>
         </Router>
