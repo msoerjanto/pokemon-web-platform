@@ -5,16 +5,12 @@ import CatchPokeDialog from "../components/CatchPokeDialog";
 import { GET_POKEMON_QUERY } from "../graphql/queries/getPokemon";
 import withContext from "../withContext";
 
-// TODO implement catch logic here
-// only interaction with context should be when we successfully
-// catch pokemon and after we name it
-
 function PokemonDetailsPageComponent(props) {
     let { name } = useParams();
     const gqlVariables = {
         name
     };
-    const {loading, error, data} = useQuery(GET_POKEMON_QUERY, {variables: gqlVariables});
+    const { loading, error, data } = useQuery(GET_POKEMON_QUERY, { variables: gqlVariables });
     const [catchingPokemon, setCatchingPokemon] = useState(false);
     const [pokemonCaught, setPokemonCaught] = useState(false);
     const [load, setLoad] = useState(false);
@@ -40,21 +36,20 @@ function PokemonDetailsPageComponent(props) {
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
     return <>
-        <div className="d-flex justify-content-center">
-            <div className="d-flex flex-column col-md-4">
-                <h1 >
-                    {data.pokemon.name}
-                </h1>
-                <img src={data.pokemon.sprites.front_default} />
-                <CatchPokeDialog
-                    loading={load}
-                    catchingPokemon={catchingPokemon}
-                    pokemon={data.pokemon}
-                    catchPokemon={catchPokemon}
-                    pokemonCaught={pokemonCaught}
-                    submitPokemon={pokemonCaughtEvent}/>
-            </div>
+        <div className="d-flex flex-column justify-content-center">
+            <h1 >
+                {data.pokemon.name}
+            </h1>
+            <img width="200px" className="align-self-center" src={data.pokemon.sprites.front_default} />
+            <CatchPokeDialog
+                loading={load}
+                catchingPokemon={catchingPokemon}
+                pokemon={data.pokemon}
+                catchPokemon={catchPokemon}
+                pokemonCaught={pokemonCaught}
+                submitPokemon={pokemonCaughtEvent} />
         </div>
+
     </>
 }
 

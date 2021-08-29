@@ -13,13 +13,26 @@ const PokeCardName = styled.strong`
 `
 
 export default function PokeCardComponent(props) {
+    if (props.owned) {
+        return (
+            <PokeCard className="d-flex flex-column">
+                <img src={props.image} />
+                <PokeCardName>
+                    {props.name}
+                </PokeCardName>
+                <button className="btn btn-primary" onClick={() => props.release(props.name)}>
+                    Release
+                </button>
+            </PokeCard>
+        );
+    }
     return (
 
-        <Link to={`pokemons/${props.pokemon.name}`} style={{ textDecoration: 'none' }}>
+        <Link to={`pokemons/${props.name}`} style={{ textDecoration: 'none' }}>
             <PokeCard className="d-flex flex-column">
-                <img src={props.pokemon.image} />
+                <img src={props.image} />
                 <PokeCardName>
-                    {props.pokemon.name}
+                    {props.name}
                 </PokeCardName>
             </PokeCard>
         </Link >

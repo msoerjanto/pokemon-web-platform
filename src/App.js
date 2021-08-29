@@ -25,7 +25,14 @@ class App extends React.Component {
     let caught = this.state.pokecaught;
     caught.push(pokemon);
     localStorage.setItem("pokecaught", JSON.stringify(caught));
-    this.setState({pokecaught: caught});
+    this.setState({ pokecaught: caught });
+  }
+
+  releasePokemon = (name) => {
+    let caught = this.state.pokecaught;
+    const filtered = caught.filter(poke => poke.name != name);
+    localStorage.setItem("pokecaught", JSON.stringify(filtered));
+    this.setState({ pokecaught: filtered });
   }
 
 
@@ -33,19 +40,22 @@ class App extends React.Component {
     return (
       <Context.Provider value={{
         ...this.state,
-        catchPokemon: this.catchPokemon
+        catchPokemon: this.catchPokemon,
+        releasePokemon: this.releasePokemon
       }}>
         <Router ref={this.routerRef}>
           <div className="App">
             <header>
               <NavBar />
             </header>
-            <Switch>
-              <Route exact path="/" component={PokemonListPage} />
-              <Route exact path="/mypokemons" component={MyPokemonsPage} />
-              <Route exact path="/pokemons" component={PokemonListPage} />
-              <Route path="/pokemons/:name" component={PokemonDetailsPage} />
-            </Switch>
+            <div className="d-flex justify-content-center">
+              <Switch>
+                <Route exact path="/" component={PokemonListPage} />
+                <Route exact path="/mypokemons" component={MyPokemonsPage} />
+                <Route exact path="/pokemons" component={PokemonListPage} />
+                <Route path="/pokemons/:name" component={PokemonDetailsPage} />
+              </Switch>
+            </div>
           </div>
         </Router>
       </Context.Provider >

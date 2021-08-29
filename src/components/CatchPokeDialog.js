@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import styled from '@emotion/styled'
-import withContext from "../withContext";
 
 const CatchPokeButton = styled.button``;
 const PokemonCaughtDialog = styled.div``;
 
 function CatchPokeDialogComponent(props) {
-    const [nickname, setNickname] = useState("");
+    const [nickname, setNickname] = useState(props.pokemon.name);
 
     if (props.catchingPokemon) {
         // catching pokemon, first check if still loading
@@ -20,7 +19,8 @@ function CatchPokeDialogComponent(props) {
                     event.preventDefault();
                     props.submitPokemon({
                         nickname,
-                        name: props.pokemon.name
+                        name: props.pokemon.name,
+                        image: props.pokemon.sprites.front_default
                     });
                     setNickname("");
                 };
@@ -37,7 +37,7 @@ function CatchPokeDialogComponent(props) {
                                     value={nickname}
                                     onChange={e => setNickname(e.target.value)}
                                     placeholder="Enter Pokemon nickname" />
-                                <input type="submit" value="Submit" />
+                                <input type="submit" value="Add to my Pokemon List" />
                             </PokemonCaughtDialog>
                         </form>
                     </>);
@@ -63,4 +63,4 @@ function CatchPokeDialogComponent(props) {
     }
 }
 
-export default withContext(CatchPokeDialogComponent);
+export default CatchPokeDialogComponent;
