@@ -30,7 +30,7 @@ class App extends React.Component {
 
   releasePokemon = (name) => {
     let caught = this.state.pokecaught;
-    const filtered = caught.filter(poke => poke.name != name);
+    const filtered = caught.filter(poke => poke.nickname != name);
     localStorage.setItem("pokecaught", JSON.stringify(filtered));
     this.setState({ pokecaught: filtered });
   }

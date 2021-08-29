@@ -11,8 +11,8 @@ function MyPokemonsPage(props) {
       <h1>
         My Pokemon Page
       </h1>
-      <PokemonCardContainer className="d-flex col-md-8">
-        {props.context.pokecaught.map(pokemon => <PokeCard key={pokemon.name} name={pokemon.name} image={pokemon.image} owned release={props.context.releasePokemon} />)}
+      <PokemonCardContainer className="d-flex flex-wrap col-md-8">
+        {props.context.pokecaught.map(pokemon => <PokeCard key={pokemon.nickname} name={pokemon.nickname} image={pokemon.image} owned release={props.context.releasePokemon} />)}
       </PokemonCardContainer>
     </div>
   </>
