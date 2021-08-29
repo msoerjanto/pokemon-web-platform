@@ -1,5 +1,9 @@
 import React from "react";
+import withContext from "../withContext";
 
-export default function MyPokemonsPage() {
+function MyPokemonsPage(props) {
+  console.log(props.context.pokecaught);
   return <>My Pokemons Page</>
 }
+
+export default withContext(MyPokemonsPage);
