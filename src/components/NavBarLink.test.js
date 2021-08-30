@@ -32,3 +32,13 @@ test('NavBarLink renders link to destination provided in "to" props', () => {
 
     expect(screen.getByText(description)).toHaveAttribute("href", expectedTo);
 });
+
+test('NavBarLink renders Home as description if no description is provided', () => {
+    const description = 'Home';
+    render(
+        <MemoryRouter>
+            <NavBarLink />
+        </MemoryRouter>
+    );
+    expect(screen.getByText(description)).toBeInTheDocument();
+})

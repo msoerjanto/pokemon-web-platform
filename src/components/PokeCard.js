@@ -12,15 +12,15 @@ const PokeCardName = styled.strong`
     text-align: center;
 `
 
-export default function PokeCardComponent(props) {
-    if (props.owned) {
+export default function PokeCardComponent({owned = false, image, name, release}) {
+    if (owned) {
         return (
             <PokeCard className="d-flex flex-column">
-                <img src={props.image} />
+                <img src={image} />
                 <PokeCardName>
-                    {props.name}
+                    {name}
                 </PokeCardName>
-                <button className="btn btn-primary" onClick={() => props.release(props.name)}>
+                <button className="btn btn-primary" onClick={() => release(name)}>
                     Release
                 </button>
             </PokeCard>
@@ -28,11 +28,11 @@ export default function PokeCardComponent(props) {
     }
     return (
 
-        <Link to={`pokemons/${props.name}`} style={{ textDecoration: 'none' }}>
+        <Link to={`pokemons/${name}`} style={{ textDecoration: 'none' }}>
             <PokeCard className="d-flex flex-column">
-                <img src={props.image} />
+                <img src={image} alt={name} />
                 <PokeCardName>
-                    {props.name}
+                    {name}
                 </PokeCardName>
             </PokeCard>
         </Link >
