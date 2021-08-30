@@ -16,13 +16,10 @@ function PokemonListPageComponent(props) {
     };
 
     const { loading, error, data, refetch } = useQuery(GET_POKEMONS_QUERY, { variables: gqlVariables });
-    const onNext = (nextOffset) => {
-        refetch({ offset: nextOffset});
+    const setOffset = (offset) => {
+        refetch({ offset });
     };
 
-    const onPrev = (prevOffset) => {
-        refetch({ offset: prevOffset});
-    }
     if (loading) return 'Loading...';
     if (error) return `Error! ${error.message}`;
     console.log(data);
@@ -38,9 +35,8 @@ function PokemonListPageComponent(props) {
             <PageControl
                 prev={data.pokemons.prevOffset}
                 next={data.pokemons.nextOffset}
-                onNext={onNext}
-                onPrev={onPrev}
-                />
+                changePage={setOffset}
+            />
         </div>
     </>
 }

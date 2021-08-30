@@ -1,29 +1,29 @@
 import React from "react";
 
-function PreviousButton(props) {
+function PreviousButton({prev, next, onPrev}) {
     // need to make limit global
-    if (!props.prev && props.next === 45) {
+    if (!prev && next === 45) {
         return <></>;
     }
     return <>
-        <button onClick={() => props.onPrev(props.prev)}>Previous</button>
+        <button onClick={() => onPrev(prev)}>Previous</button>
     </>;
 }
 
-function NextButton(props) {
-    if (!props.next) {
+function NextButton({next, onNext}) {
+    if (!next) {
         return <></>;
     }
     return <>
-        <button onClick={() => props.onNext(props.next)}>Next</button>
+        <button onClick={() => onNext(next)}>Next</button>
     </>;
 }
 
-export default function PageControl(props) {
+export default function PageControl({next, prev, changePage}) {
     return (
         <div>
-            <PreviousButton next={props.next} prev={props.prev} onPrev={props.onPrev}/>
-            <NextButton next={props.next} onNext={props.onNext} />
+            <PreviousButton next={next} prev={prev} onPrev={changePage}/>
+            <NextButton next={next} onNext={changePage} />
         </div>
     );
 }
