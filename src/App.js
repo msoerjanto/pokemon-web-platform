@@ -5,6 +5,11 @@ import PokemonListPage from "../src/pages/PokemonListPage";
 import MyPokemonsPage from "../src/pages/MyPokemonsPage";
 import NavBar from "./components/NavBar";
 import PokemonDetailsPage from "./pages/PokemonDetailsPage";
+import styled from '@emotion/styled';
+
+const Body = styled.div`
+  padding-top: 100px; 
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -43,11 +48,11 @@ class App extends React.Component {
         releasePokemon: this.releasePokemon
     }}>
         <Router ref={this.routerRef}>
-          <div className="App">
+          <Body className="App">
             <header>
               <NavBar />
             </header>
-            <div className="d-flex justify-content-center">
+            <div className="container d-flex justify-content-center">
               <Switch>
                 <Route exact path="/" component={PokemonListPage} />
                 <Route exact path="/mypokemons" component={MyPokemonsPage} />
@@ -55,7 +60,7 @@ class App extends React.Component {
                 <Route path="/pokemons/:name" component={PokemonDetailsPage} />
               </Switch>
             </div>
-          </div>
+          </Body>
         </Router>
       </Context.Provider >
     );
