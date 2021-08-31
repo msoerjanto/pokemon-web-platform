@@ -1,25 +1,27 @@
 {
   "files": {
     "main.css": "/pokemon-web-platform/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/pokemon-web-platform/static/js/main.d5fbdde9.chunk.js",
-    "main.js.map": "/pokemon-web-platform/static/js/main.d5fbdde9.chunk.js.map",
-    "runtime-main.js": "/pokemon-web-platform/static/js/runtime-main.b4534ab3.js",
-    "runtime-main.js.map": "/pokemon-web-platform/static/js/runtime-main.b4534ab3.js.map",
+    "main.js": "/pokemon-web-platform/static/js/main.debe6a00.chunk.js",
+    "main.js.map": "/pokemon-web-platform/static/js/main.debe6a00.chunk.js.map",
+    "runtime-main.js": "/pokemon-web-platform/static/js/runtime-main.009ca5a6.js",
+    "runtime-main.js.map": "/pokemon-web-platform/static/js/runtime-main.009ca5a6.js.map",
     "static/css/2.983f79de.chunk.css": "/pokemon-web-platform/static/css/2.983f79de.chunk.css",
-    "static/js/2.9fc23af3.chunk.js": "/pokemon-web-platform/static/js/2.9fc23af3.chunk.js",
-    "static/js/2.9fc23af3.chunk.js.map": "/pokemon-web-platform/static/js/2.9fc23af3.chunk.js.map",
-    "static/js/3.524d5032.chunk.js": "/pokemon-web-platform/static/js/3.524d5032.chunk.js",
-    "static/js/3.524d5032.chunk.js.map": "/pokemon-web-platform/static/js/3.524d5032.chunk.js.map",
+    "static/js/2.6490f2bf.chunk.js": "/pokemon-web-platform/static/js/2.6490f2bf.chunk.js",
+    "static/js/2.6490f2bf.chunk.js.map": "/pokemon-web-platform/static/js/2.6490f2bf.chunk.js.map",
+    "static/js/3.8e2cb2fa.chunk.js": "/pokemon-web-platform/static/js/3.8e2cb2fa.chunk.js",
+    "static/js/3.8e2cb2fa.chunk.js.map": "/pokemon-web-platform/static/js/3.8e2cb2fa.chunk.js.map",
     "index.html": "/pokemon-web-platform/index.html",
     "static/css/2.983f79de.chunk.css.map": "/pokemon-web-platform/static/css/2.983f79de.chunk.css.map",
     "static/css/main.6dea0f05.chunk.css.map": "/pokemon-web-platform/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.9fc23af3.chunk.js.LICENSE.txt": "/pokemon-web-platform/static/js/2.9fc23af3.chunk.js.LICENSE.txt"
+    "static/js/2.6490f2bf.chunk.js.LICENSE.txt": "/pokemon-web-platform/static/js/2.6490f2bf.chunk.js.LICENSE.txt",
+    "static/media/Pokemon-Web.686fc84d.png": "/pokemon-web-platform/static/media/Pokemon-Web.686fc84d.png",
+    "static/media/pokeball.dec3b7c9.png": "/pokemon-web-platform/static/media/pokeball.dec3b7c9.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.b4534ab3.js",
+    "static/js/runtime-main.009ca5a6.js",
     "static/css/2.983f79de.chunk.css",
-    "static/js/2.9fc23af3.chunk.js",
+    "static/js/2.6490f2bf.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.d5fbdde9.chunk.js"
+    "static/js/main.debe6a00.chunk.js"
   ]
 }
