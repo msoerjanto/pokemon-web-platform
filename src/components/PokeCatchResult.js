@@ -27,7 +27,7 @@ export default function PokeCatchResult({
         // text: Gotcha! x was caught!
         return (
             <>
-                <h3>Gotcha! {pokemon.name} was caught!</h3>
+                <h3>Gotcha! {pokemon ? pokemon.name : 'Pokemon'} was caught!</h3>
                 <form onSubmit={handleSubmit}>
                     <PokemonCaughtDialog class="form-group">
                         {invalidName && (<label>Invalid Name, you already have a pokemon with the same name</label>)}

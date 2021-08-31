@@ -4,7 +4,6 @@ import PokemonCardContainer from "../components/PokemonCardContainer";
 import withContext from "../withContext";
 
 function MyPokemonsPage(props) {
-  console.log(props.context.pokecaught);  
   
   return <>
     <div className="d-flex flex-column align-items-center">

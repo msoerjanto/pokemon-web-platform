@@ -4,9 +4,9 @@ import styled from '@emotion/styled'
 import withContext from "../withContext";
 import CatchPokeDialog from "./__mocks__/CatchPokeDialog";
 
-const CatchPokeButton = styled.button``;
+const PokeCatchButton = styled.button``;
 
-function CatchPokeDialogComponent({
+function PokeCatchDialogComponent({
     pokemon,
     pokemonCaught = false,
     showCatchResult = false,
@@ -27,11 +27,11 @@ function CatchPokeDialogComponent({
     } else {
         // initial state, just show catch button
         return (
-            <CatchPokeButton className="btn btn-secondary btn-lg" onClick={() => catchPokemon(pokemon)}>
+            <PokeCatchButton className="btn btn-secondary btn-lg" onClick={() => catchPokemon(pokemon)}>
                 CATCH
-            </CatchPokeButton>
+            </PokeCatchButton>
         );
     }
 }
 
-export default CatchPokeDialogComponent;
+export default PokeCatchDialogComponent;
