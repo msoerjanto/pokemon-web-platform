@@ -1,11 +1,11 @@
 import { useQuery } from '@apollo/client';
-import React, { useState } from "react";
+import React from "react";
 import PageControl from '../components/PageControl';
-import PokeCard from '../components/PokeCard';
 import PokemonCardContainer from '../components/PokemonCardContainer';
 import PokeOwned from '../components/PokeOwned';
 import { GET_POKEMONS_QUERY } from '../graphql/queries/getPokemons';
 import withContext from '../withContext';
+import ListPokeCard from '../components/ListPokeCard';
 
 
 
@@ -30,7 +30,7 @@ function PokemonListPageComponent(props) {
             </h1>
             <PokeOwned caught={props.context.pokecaught} />
             <PokemonCardContainer className="d-flex flex-wrap col-md-8">
-                {data.pokemons.results.map(pokemon => <PokeCard key={pokemon.name} name={pokemon.name} image={pokemon.image} />)}
+                {data.pokemons.results.map(pokemon => <ListPokeCard key={pokemon.name} name={pokemon.name} image={pokemon.image} />)}
             </PokemonCardContainer>
             <PageControl
                 next={data.pokemons.next}

@@ -7,11 +7,17 @@ import PokemonDetailsPage from "./PokemonDetailsPage";
 
 const mockPokeDialogStub = jest.fn();
 
-jest.mock('../components/CatchPokeDialog', () => (props) => {
+jest.mock('../components/PokeCatchDialog', () => (props) => {
     mockPokeDialogStub(props);
+    const pokeToSubmit = {
+        nickname: 'nickname',
+        name: props.pokemon.name,
+        image: props.pokemon.sprites.front_default
+    };
     return (
         <div>
-            <button onClick={() => props.submitPokemon(props.pokemon)} >SubmitPokemon</button>
+            {props.invalidName && <div>Invalid Name</div>}
+            <button onClick={() => props.submitPokemon(pokeToSubmit)} >SubmitPokemon</button>
             <button onClick={() => props.catchPokemon()}>CatchPokemon</button>
         </div>
     );
@@ -115,19 +121,16 @@ test('PokemonDetailsPage should pass proper props to CatchPokeDialog', async () 
     expect(mockPokeDialogStub).toHaveBeenCalledWith(
         expect.objectContaining(
             {
-                loading: false,
-                catchingPokemon: false,
                 pokemon: mocks[0].result.data.pokemon,
-                pokemonCaught: false
             }
         )
     );
 });
 
-test('PokemonDetailsPage should call context catchPokemon() function', async () => {
+test('PokemonDetailsPage should call context savePokemon() function', async () => {
     const stub = jest.fn();
     const providerProps = {
-        value: { catchPokemon: stub }
+        value: { catchPokemon: stub, pokecaught: [] }
     };
     customRender(
         <MockedProvider mocks={mocks}>
@@ -142,6 +145,28 @@ test('PokemonDetailsPage should call context catchPokemon() function', async () 
     fireEvent.click(screen.getByText('SubmitPokemon'));
     await new Promise(resolve => setTimeout(resolve, 0));
     expect(stub).toHaveBeenCalled();
+});
+
+test('PokemonDetailsPage should not call context catchPokemon and set invalid flag when duplicate nickname is submitted', async () => {
+    const pokecaught = [];
+    const stub = jest.fn(poke => pokecaught.push(poke));
+    const providerProps = {
+        value: { catchPokemon: stub, pokecaught }
+    };
+    customRender(
+        <MockedProvider mocks={mocks}>
+            <MemoryRouter initialEntries={["/pokemons/bulbasaur"]}>
+                <Route path="/pokemons/:name">
+                    <PokemonDetailsPage />
+                </Route>
+            </MemoryRouter>
+        </MockedProvider>
+        , { providerProps });
+    await new Promise(resolve => setTimeout(resolve, 0));
+    fireEvent.click(screen.getByText('SubmitPokemon'));
+    await new Promise(resolve => setTimeout(resolve, 0));
+    fireEvent.click(screen.getByText('SubmitPokemon'));
+    expect(stub.mock.calls.length).toEqual(1);
 });
 
 test('PokemonDetailsPage should be able to setPokemonCaught based on user events', async () => {

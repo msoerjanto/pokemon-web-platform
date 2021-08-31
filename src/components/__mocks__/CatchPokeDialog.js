@@ -1,12 +1,11 @@
 import React from 'react';
-const CatchPokeDialog = (props) => {
-    if (props.stub) {
-        props.stub(props);
-    }
+const CatchPokeDialog = ({
+    pokemon,
+    submitPokemon
+}) => {
     return (
         <div>
-            <button onClick={() => props.submitPokemon(props.pokemon)} >SubmitPokemon</button>
-            <button onClick={() => props.catchPokemon()}>Catch Pokemon</button>
+            <button onClick={() => submitPokemon(pokemon)} >SubmitPokemon</button>
         </div>
     );
 };

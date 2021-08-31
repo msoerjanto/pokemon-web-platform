@@ -1,5 +1,5 @@
 import React from "react";
-import PokeCard from "../components/PokeCard";
+import MyPokeCard from "../components/MyPokeCard";
 import PokemonCardContainer from "../components/PokemonCardContainer";
 import withContext from "../withContext";
 
@@ -12,7 +12,7 @@ function MyPokemonsPage(props) {
         My Pokemon Page
       </h1>
       <PokemonCardContainer className="d-flex flex-wrap col-md-8">
-        {props.context.pokecaught.map(pokemon => <PokeCard key={pokemon.nickname} name={pokemon.nickname} image={pokemon.image} owned release={props.context.releasePokemon} />)}
+        {props.context.pokecaught.map(pokemon => <MyPokeCard key={pokemon.nickname} name={pokemon.nickname} image={pokemon.image} owned release={props.context.releasePokemon} />)}
       </PokemonCardContainer>
     </div>
   </>

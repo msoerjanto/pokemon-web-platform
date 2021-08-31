@@ -3,7 +3,7 @@ import PokemonListPage from "./PokemonListPage";
 import { GET_POKEMONS_QUERY } from "../graphql/queries/getPokemons";
 import { fireEvent, render, screen } from '@testing-library/react';
 
-jest.mock('../components/PokeCard');
+jest.mock('../components/ListPokeCard');
 jest.mock('../components/PokeOwned');
 jest.mock('../components/PageControl');
 
@@ -105,7 +105,7 @@ const errorMock = [
         },
         error: new Error(errorMessage)
     }
-]
+];
 
 test('PokemonListPage shows Loading text when fetch from API is not complete', () => {
     render(

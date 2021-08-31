@@ -1,5 +1,5 @@
 import React from 'react';
-const PokeCard = ({owned = false, image, name, release}) => {
+const ListPokeCard = ({owned = false, image, name, release}) => {
     console.log(image);
     return (
     <div>
@@ -7,4 +7,4 @@ const PokeCard = ({owned = false, image, name, release}) => {
         <p>{name}</p>
     </div>)
 };
-export default PokeCard;
+export default ListPokeCard;

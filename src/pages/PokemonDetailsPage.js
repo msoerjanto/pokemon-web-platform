@@ -1,7 +1,7 @@
 import { useQuery } from "@apollo/client";
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import CatchPokeDialog from "../components/CatchPokeDialog";
+import CatchPokeDialog from "../components/PokeCatchDialog";
 import { GET_POKEMON_QUERY } from "../graphql/queries/getPokemon";
 import withContext from "../withContext";
 
@@ -11,13 +11,26 @@ function PokemonDetailsPageComponent(props) {
         name
     };
     const { loading, error, data } = useQuery(GET_POKEMON_QUERY, { variables: gqlVariables });
-    const [catchingPokemon, setCatchingPokemon] = useState(false);
+    const [showCatchResult, setShowCatchResult] = useState(false);
     const [pokemonCaught, setPokemonCaught] = useState(false);
-    const [load, setLoad] = useState(false);
+    const [catching, setCatching] = useState(false);
+    const [invalidName, setInvalidName] = useState(false);
+    
+    const savePokemon = (pokemon) => {
+        if (props.context.pokecaught.find(myPoke => myPoke.nickname === pokemon.nickname)) {
+            // name taken
+            setInvalidName(true);
+        } else {
+            setInvalidName(false);
+            setPokemonCaught(false);
+            setShowCatchResult(false);
+            props.context.catchPokemon(pokemon);
+        }
+    };
 
     const catchPokemon = () => {
-        setLoad(true);
-        setCatchingPokemon(true);
+        setCatching(true);
+        setShowCatchResult(true);
         if (Math.random() >= 0.5) {
             // success
             setPokemonCaught(true);
@@ -25,12 +38,7 @@ function PokemonDetailsPageComponent(props) {
             // fail
             setPokemonCaught(false);
         }
-        setTimeout(() => setLoad(false), 1500);
-    }
-
-    const pokemonCaughtEvent = (pokemon) => {
-        setCatchingPokemon(false);
-        props.context.catchPokemon(pokemon);
+        setTimeout(() => setCatching(false), 1000);
     }
 
     if (loading) return 'Loading...';
@@ -42,12 +50,13 @@ function PokemonDetailsPageComponent(props) {
             </h1>
             <img width="200px" className="align-self-center" src={data.pokemon.sprites.front_default} />
             <CatchPokeDialog
-                loading={load}
-                catchingPokemon={catchingPokemon}
                 pokemon={data.pokemon}
-                catchPokemon={catchPokemon}
                 pokemonCaught={pokemonCaught}
-                submitPokemon={pokemonCaughtEvent} />
+                showCatchResult={showCatchResult}
+                catching={catching}
+                invalidName={invalidName}
+                catchPokemon={catchPokemon}
+                submitPokemon={savePokemon} />
         </div>
     </>
 }
