@@ -5,8 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { apolloClient } from './apollo/client';
 import { GET_POKEMONS_QUERY } from './graphql/queries/getPokemons';
-import {ApolloProvider} from '@apollo/client';
+import { ApolloProvider } from '@apollo/client';
 import 'bootstrap/dist/css/bootstrap.css';
+import { BrowserRouter as Router } from "react-router-dom";
 
 
 const client = apolloClient;
@@ -14,7 +15,9 @@ const client = apolloClient;
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <Router >
+        <App />
+      </Router>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')

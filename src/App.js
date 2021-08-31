@@ -12,7 +12,6 @@ class App extends React.Component {
     this.state = {
       pokecaught: [],
     };
-    this.routerRef = React.createRef();
   }
 
   componentDidMount() {
@@ -42,7 +41,7 @@ class App extends React.Component {
         ...this.state,
         catchPokemon: this.catchPokemon,
         releasePokemon: this.releasePokemon
-      }}>
+    }}>
         <Router ref={this.routerRef}>
           <div className="App">
             <header>

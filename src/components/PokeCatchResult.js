@@ -6,9 +6,9 @@ const PokemonCaughtDialog = styled.div``;
 
 export default function PokeCatchResult({
     pokemon,
-    pokemonCaught,
+    pokemonCaught = false,
     submitPokemon,
-    invalidName,
+    invalidName = false,
     retry}) {
     const [nickname, setNickname] = useState('');
 

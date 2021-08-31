@@ -1,4 +1,5 @@
-import { render } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import App from "./App";
 
 jest.mock('./pages/PokemonListPage', () => (props) => {
@@ -19,6 +20,16 @@ jest.mock('./pages/PokemonDetailsPage', () => (props) => {
     </div>);
 });
 
-test('App renders', () => {
-    render(<App />);
+test('App navigates properly', () => {
+    render(
+        <MemoryRouter initialEntries={['/']}>
+            <App />
+        </MemoryRouter>
+    );
+
+    fireEvent.click(screen.getByText('Pokemon List'));
+    expect(screen.getByText('Pokemon List Page')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText('My Pokemons'));
+    expect(screen.getByText('My Pokemons Page')).toBeInTheDocument();
 });
