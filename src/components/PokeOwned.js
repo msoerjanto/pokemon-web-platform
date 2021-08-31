@@ -6,10 +6,10 @@ const PokeOwned = styled.div`
 
 `;
 
-export default function PokeOwnedComponent(props) {
+export default function PokeOwnedComponent({caught = []}) {
     return (
         <PokeOwned className="d-flex flex-column align-items-center">
-            <h1>{props.caught.length}</h1>
+            <h1>{caught.length}</h1>
             <h2>Owned</h2>
         </PokeOwned>
     );

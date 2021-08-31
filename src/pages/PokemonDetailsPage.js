@@ -49,7 +49,6 @@ function PokemonDetailsPageComponent(props) {
                 pokemonCaught={pokemonCaught}
                 submitPokemon={pokemonCaughtEvent} />
         </div>
-
     </>
 }
 

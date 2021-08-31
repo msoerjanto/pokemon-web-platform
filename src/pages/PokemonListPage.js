@@ -33,8 +33,10 @@ function PokemonListPageComponent(props) {
                 {data.pokemons.results.map(pokemon => <PokeCard key={pokemon.name} name={pokemon.name} image={pokemon.image} />)}
             </PokemonCardContainer>
             <PageControl
-                prev={data.pokemons.prevOffset}
-                next={data.pokemons.nextOffset}
+                next={data.pokemons.next}
+                prev={data.pokemons.previous}
+                prevOffset={data.pokemons.prevOffset}
+                nextOffset={data.pokemons.nextOffset}
                 changePage={setOffset}
             />
         </div>
